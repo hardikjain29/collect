@@ -50,7 +50,7 @@ function Invoice() {
 
   const total = useMemo(() => {
     return lineItems?.reduce((acc, item) => acc + item.price, 0);
-  }, [lineItems]); // Can either generate this inside <InvoiceTotal>. But choosing to do here, because I don't want to pass all the lineItems to <InvoiceTotal> component because, let's say if there's only change in the description, I don't want the InvoiceTotal to re-render, it should only re render, if the total changes(Hence also useMemo).
+  }, [lineItems]); // Can either generate this inside <InvoiceTotal>. But choosing to do here, because I don't want to pass all the lineItems to <InvoiceTotal> component because, let's say if there's only change in the description, I don't want the InvoiceTotal to re-render, it should only re render, if the total changes(Also useMemo because, if there's no change in lineItems, we don't want to recalculate).
 
   return (
     <>
