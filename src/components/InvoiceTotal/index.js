@@ -1,16 +1,19 @@
 import React from 'react';
 import { TableRow, TableCell } from '../Table';
 
-function InvoiceTotal() {
+function InvoiceTotal({ total = 0 }) {
+  const VAT_PERCENTAGE = 19;
+  const calculateVAT = (vatPercentage) => (total * vatPercentage) / 100;
   return (
     <>
       <TableRow className="total">
         <TableCell></TableCell>
-        <TableCell>Total: 1500,38 EUR</TableCell>
+        <TableCell>Total: {total} EUR</TableCell>
       </TableRow>
       <TableRow className="vat">
         <TableCell></TableCell>
-        <TableCell>VAT (19%): 285,07 EUR</TableCell>
+        <TableCell>VAT ({VAT_PERCENTAGE}%): {calculateVAT(VAT_PERCENTAGE)} EUR</TableCell> 
+        {/* Since VAT for now is fixed, we define it on the top, if it was dynamic, we could pass it to the function from props and you would get the dynamic value */}
       </TableRow>
     </>
   );

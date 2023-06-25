@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Table, TableBody } from '../components/Table';
 
 import InvoiceHeader from '../components/InvoiceHeader';
@@ -19,13 +19,27 @@ function Invoice() {
     fetchInvoice();
   }, [])
 
+  const { id, company, fullName, createdAt, dueAt, lineItems, email } = invoice;
+
+  const total = useMemo(() => {
+    return lineItems?.reduce((acc, item) => acc + item.price, 0);
+  }, [lineItems]); // Can either generate this inside <InvoiceTotal>. But choosing to do here, because I don't want to pass all the lineItems to <InvoiceTotal> component because, let's say if there's only change in the description, I don't want the InvoiceTotal to render, it should only re render, if the total changes(Hence also useMemo).
+
   return (
     <Table cellPadding="0" cellSpacing="0">
       <TableBody>
-        <InvoiceHeader />
-        <InvoiceInformation />
-        <InvoiceItems items={invoice.lineItems} />
-        <InvoiceTotal />
+        <InvoiceHeader
+          invoiceNumber={id}
+          createdAt={createdAt}
+          dueAt={dueAt}
+        />
+        <InvoiceInformation
+          company={company}
+          fullName={fullName}
+          email={email}
+        />
+        <InvoiceItems items={lineItems} />
+        <InvoiceTotal total={total} />
       </TableBody>
     </Table>
   );

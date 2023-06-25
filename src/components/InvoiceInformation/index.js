@@ -2,7 +2,7 @@ import React from 'react';
 import { TableRow, TableCell } from '../Table';
 import './styles.css';
 
-function InvoiceInformation() {
+function InvoiceInformation({ company, fullName, email }) {
   return (
     <TableRow className="information">
       <TableCell>
@@ -13,10 +13,10 @@ function InvoiceInformation() {
         Hamburg, Germany
       </TableCell>
       <TableCell>
-        Acme, GmbH.
+        {company}
         <br />
-        Bob Hans Jens, The Great <br />
-        youknowit@star-wars-is-real.pew
+        {fullName} <br />
+        {email}
       </TableCell>
     </TableRow>
   );

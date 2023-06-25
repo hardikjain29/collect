@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableRow, TableCell } from '../Table';
 
-function InvoiceItems({ items }) {
+function InvoiceItems({ items = [] }) {
   return (
     <>
       <TableRow className="heading">
