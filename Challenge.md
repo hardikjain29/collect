@@ -20,10 +20,3 @@ We expect you to write code you would consider production-ready. This means your
 ## Completion Time
 
 Within a maximum of 7 Days.
-
-
-The task is to build an invoice displaying app based on the look and feel which has been provided in this project. It includes the following topics to address:
-1. Convert the static skeleton into a well structured react component tree. You are free to adjust the existing html and CSS structures to your individual needs.
-4. Dynamically compute the sum and VAT of the line items.
-5. Provide a UI extension which allows editing a line item *description* and it's *price*.
-6. Extend the App with a file based drop zone to load and display any `invoice.json` file dragged into the browser by users.
