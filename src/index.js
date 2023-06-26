@@ -8,7 +8,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('invoice')
+  document.getElementById('invoice') // The class ideally should be called app, since there could be more things than invoice coming in the future.
 );
 
 // If you want to start measuring performance in your app, pass a function
